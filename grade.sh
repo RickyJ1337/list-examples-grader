@@ -5,10 +5,10 @@ set -e
 
 rm -rf student-submission
 git clone $1 student-submission
-if () {
-    echo "ListExamples.java was not submitted.";
-    exit;
-}
-cd 
+if ! [[-f $FILE]] 
+then
+    echo "Sorry, ListExamples.java could not be found."
+    exit 1
+cd student-submission
 javac -cp $CPATH *.java
-java -cp $CPATH org.junit.runner.JUnitCore 
+java -cp $CPATH org.junit.runner.JUnitCore TestListExamples
